@@ -1,7 +1,7 @@
 
 
 function love.load()
-  require "MainMenu"
+  require "Source/MainMenu"
   menu_load()
 end
 
