@@ -41,9 +41,11 @@ function Menu_Update(dt)
 end
 
 function Menu_Draw()
+  love.graphics.setColor(255,0,0)
   for i,v in ipairs(wallTiles) do
   love.graphics.draw(v.graph,v.posX,v.posY)
 end
+  love.graphics.setColor(255,255,255)
 for i,v in ipairs(pathTiles) do
   love.graphics.draw(v.graph,v.posX,v.posY)
   end
