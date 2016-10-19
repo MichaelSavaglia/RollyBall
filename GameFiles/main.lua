@@ -3,6 +3,7 @@
 function love.load()
   require "Source/MainMenu"
   require "Source/MapGeneration"
+  require "Source/MainGame"
   Menu_Load()
   Map_Load()
 end
