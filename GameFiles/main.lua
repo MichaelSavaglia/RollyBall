@@ -2,14 +2,16 @@
 
 function love.load()
   require "Source/MainMenu"
-  Menu_Load()
+  require "Source/PlayerController"
+  require "Source/MainGame"
+  
 end
 
 
 function love.draw()
-  Menu_Draw()
+  
 end
 
 function love.update(dt)
-
+  
 end
