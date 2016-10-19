@@ -2,6 +2,10 @@ function love.load()
   require "Source/MainMenu"
   require "Source/MapGeneration"
   require "Source/MainGame"
+  
+  gamestate = "mainMenu"
+  
+  
   Menu_Load()
   Map_Load()
 end
@@ -14,5 +18,5 @@ end
 
 function love.update(dt)
 
-<<<<<<< HEAD
+
 end
