@@ -2,12 +2,12 @@
 
 function love.load()
   require "Source/MainMenu"
-  menu_load()
+  Menu_Load()
 end
 
 
 function love.draw()
-  menu_draw()
+  Menu_Draw()
 end
 
 function love.update(dt)
