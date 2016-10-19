@@ -54,7 +54,7 @@ end
 
 function love.mousepressed(x, y, button)
   -- Check if left mouse button pressed, if it is, set dragging to true
-  if button == 1
+  if button == 1 and gamestate == "game"
   and x > rect.x and x < rect.x + rect.width
   and y > rect.y and y < rect.y + rect.height
   then
@@ -65,7 +65,7 @@ end
 
 function love.mousereleased(x, y, button)
   -- resets dragging once mouse released
-  if button == 1 then 
+  if button == 1 and gamestate == "game" then 
     dragging = false
   end
 end
