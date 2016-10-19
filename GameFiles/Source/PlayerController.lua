@@ -1,43 +1,52 @@
 function Player_Load()
+  
+  -- Temporary data structures for rectangle at bottom and player circle
   rect = {
-    x = 100,
-    y = 100,
-    width = 100,
-    height = 100,
-    dragging = { active = false, diffx = 0, diffy = 0 }
-    }
+    x = 0,
+    y = 860,
+    width = 540,
+    height = 100 }
+  
+  circle = {
+    x = 250,
+    y = 800,
+    radiusx = 30,
+    radiusy = 30 }
+  
+  dragging = false
 end
 
+
 function Player_Update(dt)
-  if rect.dragging.active then
-    rect.x = love.mouse.getX() - rect.dragging.diffx
-    rect.y = love.mouse.getY() - rect.dragging.diffy
+  -- Set circle position to where click occured
+  if dragging == true then
+    circle.x = love.mouse.getX()
   end
 end
 
 
 function Player_Draw()
+  -- Draws data structures (temp)
+  love.graphics.setColor(255,255,255)
   love.graphics.rectangle("fill", rect.x, rect.y, rect.width, rect.height)
+  love.graphics.ellipse("fill", circle.x, circle.y, circle.radiusx, circle.radiusy)
 end
 
 
 function love.mousepressed(x, y, button)
-
+  -- Check if left mouse button pressed, if it is, set dragging to true
   if button == 1
   and x > rect.x and x < rect.x + rect.width
   and y > rect.y and y < rect.y + rect.height
   then
-    print("TEST")
-    rect.dragging.active = true
-    rect.dragging.diffx = x - rect.x
-    rect.dragging.diffy = y - rect.y
+    dragging = true
   end
 end
+
 
 function love.mousereleased(x, y, button)
+  -- resets dragging once mouse released
   if button == 1 then 
-    rect.dragging.active = false
+    dragging = false
   end
 end
-
-
