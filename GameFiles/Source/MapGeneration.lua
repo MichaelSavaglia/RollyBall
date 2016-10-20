@@ -41,10 +41,12 @@ function Map_Update(dt)
 end
 
 function Map_Draw()
+  love.graphics.setColor(255, 255,255)
   for i,v in ipairs(wallTiles) do
   love.graphics.draw(v.graph,v.posX,v.posY)
-end
-for i,v in ipairs(pathTiles) do
+  end
+
+  for i,v in ipairs(pathTiles) do
   love.graphics.draw(v.graph,v.posX,v.posY)
   end
   love.graphics.draw(player,love.graphics.getWidth()/2 - 24,love.graphics.getHeight()-75)
