@@ -8,7 +8,7 @@ function clampOnRange(x, min, max)
   end
 end
 
-function clamOnRectangle(x, y, rectX, rectY, rectWidth, rectHeight)
+function clampOnRectangle(x, y, rectX, rectY, rectWidth, rectHeight)
   clamp = {}
   clamp.x = clampOnRange(x, rectX, rectX + rectWidth)
   clamp.y = clampOnRange(y, rectY, rectY + rectHeight)
@@ -17,7 +17,7 @@ function clamOnRectangle(x, y, rectX, rectY, rectWidth, rectHeight)
 end
 
 function circleRectangleCollide(circleX, circleY, circleRadius, rectX, rectY, rectWidth, rectHeight)
-  clamped = clamOnRectangle(circleX, circleY, rectX, rectX, rectWidth, rectHeight)
+  clamped = clampOnRectangle(circleX, circleY, rectX, rectX, rectWidth, rectHeight)
   return circlePointCollide(circleX, circleY, circleRadius, clamped.x, clamped.y)
   
 end
