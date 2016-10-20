@@ -41,6 +41,7 @@ function Map_Update(dt)
 end
 
 function Map_Draw()
+
   love.graphics.setColor(255, 255,255)
   for i,v in ipairs(wallTiles) do
   love.graphics.draw(v.graph,v.posX,v.posY)

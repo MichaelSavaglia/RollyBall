@@ -4,15 +4,18 @@ function love.load()
   require "Source/MainGame"
   require "Source/CollisionHandler"
   
+
   gamestate = "game"
   
   Menu_Load()
   MainGame_Load()
   Map_Load()
+  MainGame_Load()
 end
 
 
 function love.draw()
+
   if(gamestate == "startScreen") then
     
     Menu_Draw()
@@ -33,4 +36,10 @@ function love.update(dt)
     MainGame_Update(dt)
     Map_Update(dt)
   end
+
+end
+
+function love.update(dt)
+  MainGame_Update(dt)
+
 end
