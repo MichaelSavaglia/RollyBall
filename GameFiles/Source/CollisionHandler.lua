@@ -30,6 +30,14 @@ function circlePointCollide(circleX, circleY, circleRadius, x, y)
 end
 
 
+function mouseRectCollide(mouseX, mouseY, button, rectX, rectY, rectWidth, rectHeight, reqButton)
+  if reqButton == button
+  and mouseX > rectX and x < rectX + rectWidth
+  and mouseY > rectY and y < rectY + rectHeight
+  then
+end
+
+
 
   
   
