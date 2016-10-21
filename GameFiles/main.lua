@@ -5,7 +5,7 @@ function love.load()
   require "Source/CollisionHandler"
   
 
-  gamestate = "game"
+  gamestate = "startScreen"
   
   Menu_Load()
   MainGame_Load()
@@ -21,8 +21,10 @@ function love.draw()
     Menu_Draw()
     
   elseif(gamestate == "game") then
+    
     Map_Draw()
     MainGame_Draw()
+    
   elseif(gamestate == "death") then
     
   elseif(gamestate == "scores") then
@@ -37,8 +39,10 @@ function love.update(dt)
     Menu_Update()
     
   elseif(gamestate == "game") then
+    
     MainGame_Update(dt)
     Map_Update(dt)
+    
   elseif(gamestate == "death") then
     
   elseif(gamestate == "scores") then
@@ -47,7 +51,3 @@ function love.update(dt)
 
 end
 
-function love.update(dt)
-  MainGame_Update(dt)
-
-end
