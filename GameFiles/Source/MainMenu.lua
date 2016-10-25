@@ -1,11 +1,14 @@
+require "Source/CollisionHandler"
+require "main"
+
 function Menu_Load()
   introScreen = love.graphics.newImage("sprites/startScreen.png")
   startButton = love.graphics.newImage("sprites/startButton.png")
-  startButtonPosX = 100
-  startButtonPosY = 400
+  startButtonPosX = 70
+  startButtonPosY = 200
   scoresButton = love.graphics.newImage("sprites/scoresButton.png")
-  scoresButtonPosX = 100
-  scoresButtonPosY = 600
+  scoresButtonPosX = 70
+  scoresButtonPosY = 400
 end
 
 function Menu_Update(dt)
