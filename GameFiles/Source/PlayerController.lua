@@ -54,9 +54,11 @@ end
 
 function love.mousepressed(x, y, button)
   -- Check if left mouse button pressed, if it is, set dragging to true
-  if mouseRectCollide(x, y, button, rect.x, rect.y, rect.width, rect.height, 1) and gamestate == "game"
-  then
-    dragging = true
+  if gamestate == "game" then
+    if mouseRectCollide(x, y, button, rect.x, rect.y, rect.width, rect.height, 1) 
+    then
+      dragging = true
+    end
   end
 end
 
