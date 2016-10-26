@@ -21,3 +21,15 @@ function Menu_Draw()
   love.graphics.draw(scoresButton, scoresButtonPosX, scoresButtonPosY)
   
 end
+
+function Menu_mousepressed(x, y, button)
+    if mouseRectCollide(x, y, button, 70, 200, 400, 130, 1) then
+      gamestate = "game"
+    elseif mouseRectCollide(x, y, button, 70, 400, 400, 130, 1) then
+      gamestate = "scores"
+    end
+end
+
+function Menu_keypressed(key)
+  
+end
