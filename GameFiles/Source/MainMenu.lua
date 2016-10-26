@@ -21,5 +21,3 @@ function Menu_Draw()
   love.graphics.draw(scoresButton, scoresButtonPosX, scoresButtonPosY)
   
 end
-
-

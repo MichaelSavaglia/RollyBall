@@ -32,8 +32,8 @@ end
 
 function mouseRectCollide(mouseX, mouseY, button, rectX, rectY, rectWidth, rectHeight, reqButton)
   if reqButton == button
-  and mouseX > rectX and x < rectX + rectWidth
-  and mouseY > rectY and y < rectY + rectHeight
+  and mouseX > rectX and mouseX < rectX + rectWidth
+  and mouseY > rectY and mouseY < rectY + rectHeight
   then
     return true
   end

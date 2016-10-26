@@ -1,5 +1,5 @@
-require "Source/CollisionHandler"
 function Player_Load()
+  require "Source/CollisionHandler"
   
   -- Temporary data structures for rectangle at bottom and player circle
   rect = {
@@ -55,9 +55,15 @@ end
 function love.mousepressed(x, y, button)
   -- Check if left mouse button pressed, if it is, set dragging to true
   if gamestate == "game" then
-    if mouseRectCollide(x, y, button, rect.x, rect.y, rect.width, rect.height, 1) 
-    then
+    if mouseRectCollide(x, y, button, rect.x, rect.y, rect.width, rect.height, 1) then
       dragging = true
+    end
+    
+  elseif gamestate == "startScreen" then
+    if mouseRectCollide(x, y, button, 70, 200, 400, 130, 1) then
+      gamestate = "game"
+    elseif mouseRectCollide(x, y, button, 70, 400, 400, 130, 1) then
+      gamestate = "scores"
     end
   end
 end

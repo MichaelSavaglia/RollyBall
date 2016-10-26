@@ -13,7 +13,6 @@ function love.load()
   MainGame_Load()
 end
 
-
 function love.draw()
 
   if(gamestate == "startScreen") then
