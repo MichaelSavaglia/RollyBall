@@ -3,6 +3,7 @@ function love.load()
   require "Source/MapGeneration"
   require "Source/MainGame"
   require "Source/CollisionHandler"
+  require "Source/PlayerController"
   
 
   gamestate = "startScreen"
@@ -13,9 +14,8 @@ function love.load()
   MainGame_Load()
 end
 
-
 function love.draw()
-
+love.graphics.setColor(255, 255,255)
   if(gamestate == "startScreen") then
     
     Menu_Draw()
@@ -34,7 +34,7 @@ function love.draw()
 end
 
 function love.update(dt)
-  if(gamestate == "intro") then
+  if(gamestate == "startScreen") then
     
     Menu_Update()
     
@@ -50,4 +50,27 @@ function love.update(dt)
   end
 
 end
+
+function love.mousepressed(x, y, button)
+  if gamestate == "startScreen" then
+    Menu_mousepressed(x,y,button)
+  elseif gamestate == "game" then
+    Player_mousepressed(x, y, button)
+  end
+end
+
+function love.mousereleased(x, y, button)
+  if gamestate == "starscreen" then
+  
+  elseif gamestate == "game" then
+    Player_mousereleased(x, y, button)
+  end
+end
+
+function love.keypressed(key)
+  if key == "escape" then
+    gamestate = "startScreen"
+  end
+end
+
 
