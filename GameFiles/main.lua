@@ -1,6 +1,6 @@
 function love.load()
   require "Source/MainMenu"
-  require "Source/MapGeneration"
+  require "Source/RowManager"
   require "Source/MainGame"
   require "Source/CollisionHandler"
   require "Source/PlayerController"
@@ -10,7 +10,7 @@ function love.load()
   
   Menu_Load()
   MainGame_Load()
-  Map_Load()
+  GenerateRow()
   MainGame_Load()
 end
 
@@ -22,7 +22,7 @@ love.graphics.setColor(255, 255,255)
     
   elseif(gamestate == "game") then
     
-    Map_Draw()
+    DrawRow()  
     MainGame_Draw()
     
   elseif(gamestate == "death") then
@@ -37,11 +37,13 @@ function love.update(dt)
   if(gamestate == "startScreen") then
     
     Menu_Update()
+
     
   elseif(gamestate == "game") then
     
+    UpdateRow()
     MainGame_Update(dt)
-    Map_Update(dt)
+   
     
   elseif(gamestate == "death") then
     
