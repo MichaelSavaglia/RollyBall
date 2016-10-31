@@ -1,6 +1,9 @@
 function Player_Load()
   require "Source/CollisionHandler"
   
+  player = love.graphics.newImage("sprites/ball.png")
+  slider = love.graphics.newImage("sprites/slider.png")
+  
   -- Temporary data structures for rectangle at bottom and player circle
   rect = {
     x = 0,
@@ -9,12 +12,10 @@ function Player_Load()
     height = 100 }
   
   circle = {
-    x = 250,
-    y = 800,
+    x = 270,
+    y = 700,
     radiusx = 30,
     radiusy = 30 }
-  
-  
   
   dragging = false
   test = false
@@ -37,8 +38,13 @@ function Player_Draw()
   -- Draws data structures (temp)
   love.graphics.setColor(0,0,0)
   love.graphics.rectangle("fill", rect.x, rect.y, rect.width, rect.height)
-  love.graphics.setColor(100,100,255)
-  love.graphics.ellipse("fill", circle.x, circle.y, circle.radiusx, circle.radiusy)
+  -- reset color
+  love.graphics.setColor(255,255,255)
+  love.graphics.rectangle("fill", rect.x, rect.y + 14, rect.width, rect.height - 28)
+    -- reset color
+  love.graphics.setColor(255,255,255)
+  love.graphics.draw(player, circle.x - circle.radiusx, circle.y - circle.radiusy)
+  love.graphics.draw(slider, circle.x - 65, 870)
 end
 
 function Player_mousereleased(x, y, button)

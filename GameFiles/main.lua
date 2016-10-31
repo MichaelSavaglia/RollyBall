@@ -15,7 +15,8 @@ function love.load()
 end
 
 function love.draw()
-love.graphics.setColor(255, 255,255)
+  --reset color every frame
+  love.graphics.setColor(255, 255,255)
   if(gamestate == "startScreen") then
     
     Menu_Draw()
