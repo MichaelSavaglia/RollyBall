@@ -27,6 +27,7 @@ function Menu_mousepressed(x, y, button)
     if mouseRectCollide(x, y, button, 70, 200, 400, 130, 1) then
       Player_Load()
       Map_Load()
+      MainGame_Load()
       gamestate = "game"
     elseif mouseRectCollide(x, y, button, 70, 400, 400, 130, 1) then
       gamestate = "scores"

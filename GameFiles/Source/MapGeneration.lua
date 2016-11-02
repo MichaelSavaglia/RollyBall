@@ -5,7 +5,7 @@ function Map_Load()
   tileImage = love.graphics.newImage("sprites/wallTile.png")
   Tiles_Load()
   
-  increment = 1
+  increment = 3
   change = 5
   currentTile = 2
   previousTile = 2
@@ -78,7 +78,7 @@ end
 
 function Map_Draw()
   love.graphics.setColor(255, 255,255)
-  love.graphics.rectangle("fill", 0, 0, 540, 960)
+  love.graphics.rectangle("fill", 0, 0, 630, 960)
   
   for i = 0, 9 do --iterates rows
     

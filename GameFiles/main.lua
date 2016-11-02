@@ -1,4 +1,9 @@
 function love.load()
+
+
+  love.resize(love.graphics.getDimensions())
+    
+    
   require "Source/MainMenu"
   require "Source/MapGeneration"
   require "Source/MainGame"
@@ -67,6 +72,27 @@ function love.mousepressed(x, y, button)
   end
 end
 
+function love.touchpressed(id, x,y, dx, dy, pressure)
+  
+  if gamestate == "startScreen" then
+    Menu_mousepressed(x,y, 1)
+  elseif gamestate == "game" then
+    Player_mousepressed(x, y, 1)
+  elseif gamestate == "death" then
+    Gameover_mousepressed(x, y, 1) 
+  end
+end
+
+function love.touchreleased(id, x,y,dx,dy, pressure)
+  if gamestate == "starscreen" then
+  
+  elseif gamestate == "game" then
+    Player_mousereleased(x, y, 1)
+  end
+end
+
+
+
 function love.mousereleased(x, y, button)
   if gamestate == "starscreen" then
   
@@ -80,5 +106,12 @@ function love.keypressed(key)
     gamestate = "startScreen"
   end
 end
+
+function love.resize(w, h)
+  width = w
+  height = h
+  scale = height / 1024
+end
+
 
 
