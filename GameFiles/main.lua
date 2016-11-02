@@ -4,7 +4,8 @@ function love.load()
   require "Source/MainGame"
   require "Source/CollisionHandler"
   require "Source/PlayerController"
-  
+  require "Source/Gameover"
+    
 
   gamestate = "startScreen"
   
@@ -12,10 +13,12 @@ function love.load()
   MainGame_Load()
   Map_Load()
   MainGame_Load()
+  Gameover_Load()
 end
 
 function love.draw()
-love.graphics.setColor(255, 255,255)
+  --reset color every frame
+  love.graphics.setColor(255, 255,255)
   if(gamestate == "startScreen") then
     
     Menu_Draw()
@@ -26,6 +29,7 @@ love.graphics.setColor(255, 255,255)
     MainGame_Draw()
     
   elseif(gamestate == "death") then
+    Gameover_Draw()
     
   elseif(gamestate == "scores") then
     
@@ -45,6 +49,8 @@ function love.update(dt)
     
   elseif(gamestate == "death") then
     
+    Gameover_Update()
+    
   elseif(gamestate == "scores") then
     
   end
@@ -56,6 +62,8 @@ function love.mousepressed(x, y, button)
     Menu_mousepressed(x,y,button)
   elseif gamestate == "game" then
     Player_mousepressed(x, y, button)
+  elseif gamestate == "death" then
+    Gameover_mousepressed(x, y, button) 
   end
 end
 

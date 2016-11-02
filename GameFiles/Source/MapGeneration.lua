@@ -1,55 +1,79 @@
-function Map_Load()
-
-   player = love.graphics.newImage("sprites/ball.png")
-   
-   -- Tiles 108px by 50px 
-   -- 100 tiles on screen at once
-   
-   --Code to fill screen with wallTiles
-     i = 0
-     y = 0
-   wallTiles = {}
-   for x=0,99 do
-     wallTile = {}
-     i = i + 1
-     if i > 4 then
-       i = 0
-     end
-     y = y + 1
-     if y > 10 then
-       y = 0
-       end
-     wallTile.graph = love.graphics.newImage("sprites/walltile.png")
-     wallTile.posX = 108 * i
-     wallTile.posY = love.graphics.getHeight() - 96 * y
-  table.insert(wallTiles, wallTile)
+function Map_Load()   
+  require "Source/TileConfig"
+  tileImage = love.graphics.newImage("sprites/wallTile.png")
+  
+  increment = 4
+  change = 5
+  currentTile = 2
+  previousTile = 2
+  math.randomseed( os.time() )
+  newTile = math.random(5) - 1
 end
--- Code to generate Path tiles
-i = 0
-  pathTiles = {}
-  for i=0,10 do
-  pathTile = {}
 
-  pathTile.graph = love.graphics.newImage("sprites/pathtile.png")
-  pathTile.posX = love.graphics.getWidth() /2 - 50
-  pathTile.posY = love.graphics.getHeight() -96 * i
-  table.insert(pathTiles, pathTile)
-  end
-end
 function Map_Update(dt)
-
+  for i = 0, 9 do --iterates rows
+    tile[i].rowY = tile[i].rowY + increment
+    if (tile[i].rowY >= 972) then -- move rows to top
+      tile[i].rowY = -104
+      change = change - 1
+    end
+  
+    if(tile[i].rowY == -104) then -- only alter rows that have been moved to the top
+      --generate new column
+      if (change == 0) then -- change to new column if change is zero
+        change = 4
+        
+        while newTile == currentTile do 
+          newTile = math.random(5) - 1
+        end
+        currentTile = newTile
+        
+        for j = 0, 4 do -- iterate through tiles in this row
+          if(currentTile > previousTile) then 
+            if (j >= previousTile and j <= currentTile) then
+              tile[i][j].blockActive = false
+            else
+              tile[i][j].blockActive = true
+            end
+          elseif(currentTile < previousTile) then
+            if (j >= currentTile and j <= previousTile) then
+              tile[i][j].blockActive = false
+            else
+              tile[i][j].blockActive = true
+            end
+          end
+        end
+        
+        previousTile = newTile
+        
+      else -- keep new rows the same until there is another change ()
+        for j = 0, 4 do -- iterate through tiles in this row
+          if j == currentTile then
+            tile[i][j].blockActive = false
+          else
+            tile[i][j].blockActive = true
+          end
+        end
+      end
+    end
+  end
+  
+  --run collision detection call here
 end
 
 function Map_Draw()
-
   love.graphics.setColor(255, 255,255)
-  for i,v in ipairs(wallTiles) do
-  love.graphics.draw(v.graph,v.posX,v.posY)
-  end
-
-  for i,v in ipairs(pathTiles) do
-  love.graphics.draw(v.graph,v.posX,v.posY)
-  end
-  love.graphics.draw(player,love.graphics.getWidth()/2 - 24,love.graphics.getHeight()-75)
+  love.graphics.rectangle("fill", 0, 0, 540, 960)
   
+  for i = 0, 9 do --iterates rows
+    
+    for j = 0, 4 do --iterates tiles in row
+      
+      if (tile[i][j].blockActive == true) then
+        love.graphics.draw(tileImage, tile[i][j].x, tile[i].rowY)
+      end
+      
+    end
+    
+  end
 end
