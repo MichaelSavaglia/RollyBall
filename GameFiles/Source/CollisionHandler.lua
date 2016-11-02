@@ -17,7 +17,7 @@ function clampOnRectangle(x, y, rectX, rectY, rectWidth, rectHeight)
 end
 
 function circleRectangleCollide(circleX, circleY, circleRadius, rectX, rectY, rectWidth, rectHeight)
-  clamped = clampOnRectangle(circleX, circleY, rectX, rectX, rectWidth, rectHeight)
+  clamped = clampOnRectangle(circleX, circleY, rectX, rectY, rectWidth, rectHeight)
   return circlePointCollide(circleX, circleY, circleRadius, clamped.x, clamped.y)
   
 end

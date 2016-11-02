@@ -25,7 +25,6 @@ function love.draw()
     
   elseif(gamestate == "game") then
     
-    Map_Draw()
     MainGame_Draw()
     
   elseif(gamestate == "death") then
@@ -45,7 +44,7 @@ function love.update(dt)
   elseif(gamestate == "game") then
     
     MainGame_Update(dt)
-    Map_Update(dt)
+    
     
   elseif(gamestate == "death") then
     

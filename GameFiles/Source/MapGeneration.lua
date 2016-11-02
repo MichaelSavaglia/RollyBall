@@ -1,8 +1,11 @@
 function Map_Load()   
   require "Source/TileConfig"
+  require "Source/PlayerController"
+  require "Source/CollisionHandler"
   tileImage = love.graphics.newImage("sprites/wallTile.png")
+  Tiles_Load()
   
-  increment = 4
+  increment = 1
   change = 5
   currentTile = 2
   previousTile = 2
@@ -53,12 +56,24 @@ function Map_Update(dt)
           else
             tile[i][j].blockActive = true
           end
+          
+          
         end
       end
     end
+    
+    
+    
   end
   
-  --run collision detection call here
+  for i = 0, 9 do
+    for j = 0, 4 do
+      if tile[i][j].blockActive == true and
+      circleRectangleCollide(circle.x, circle.y, circle.radiusx, tile[i][j].x, tile[i].rowY, tileWitdth, tileHeight) then
+        gamestate = "death"
+      end
+    end
+  end
 end
 
 function Map_Draw()
@@ -72,7 +87,6 @@ function Map_Draw()
       if (tile[i][j].blockActive == true) then
         love.graphics.draw(tileImage, tile[i][j].x, tile[i].rowY)
       end
-      
     end
     
   end

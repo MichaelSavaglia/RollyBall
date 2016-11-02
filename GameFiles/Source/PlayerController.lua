@@ -29,7 +29,11 @@ function Player_Update(dt)
   end
   
   --if circleRectangleCollide(circle.x, circle.y, circle.radiusx, rectangle.x, rectangle.y, rectangle.width, rectangle.height) then
-   
+  if(circle.x + circle.radiusx >= 540) or
+  (circle.x - circle.radiusx <= 0) then
+    gamestate = "death"
+  end
+  
   
 end
 
@@ -40,7 +44,8 @@ function Player_Draw()
   love.graphics.rectangle("fill", rect.x, rect.y, rect.width, rect.height)
   -- reset color
   love.graphics.setColor(255,255,255)
-  love.graphics.rectangle("fill", rect.x, rect.y + 14, rect.width, rect.height - 28)
+  love.graphics.rectangle("fill", rect.x, rect.y + 10, rect.width, rect.height - 20)
+
     -- reset color
   love.graphics.setColor(255,255,255)
   love.graphics.draw(player, circle.x - circle.radiusx, circle.y - circle.radiusy)
