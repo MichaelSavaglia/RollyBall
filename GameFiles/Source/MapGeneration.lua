@@ -78,7 +78,7 @@ end
 
 function Map_Draw()
   love.graphics.setColor(255, 255,255)
-  love.graphics.rectangle("fill", 0, 0, 630, 960)
+  love.graphics.rectangle("fill", 0, 0, 540, 960)
   
   for i = 0, 9 do --iterates rows
     

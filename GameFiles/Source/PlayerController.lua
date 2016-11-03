@@ -25,7 +25,7 @@ end
 function Player_Update(dt)
   -- Set circle position to where click occured
   if dragging == true then
-    circle.x = love.mouse.getX()
+    circle.x = love.mouse.getX() / scalex
   end
   
   --if circleRectangleCollide(circle.x, circle.y, circle.radiusx, rectangle.x, rectangle.y, rectangle.width, rectangle.height) then
