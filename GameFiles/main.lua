@@ -1,7 +1,18 @@
 function love.load()
 
-
-  love.resize(love.graphics.getDimensions())
+  windowWidth = 540
+  windowHeight = 1920/2
+  
+  if love.system.getOS() == "Android" then
+    local x, y = love.graphics.getDimensions()
+    scalex = (x/windowWidth)
+    scaley = (y/windowHeight)
+  else
+    scalex = 1
+    scaley = 1
+  end
+  
+  love.window.setMode(windowWidth * scalex, windowHeight * scaley)
     
     
   require "Source/MainMenu"
@@ -22,6 +33,7 @@ function love.load()
 end
 
 function love.draw()
+  love.graphics.scale(scalex,scaley)
   --reset color every frame
   love.graphics.setColor(255, 255,255)
   if(gamestate == "startScreen") then
@@ -62,6 +74,8 @@ function love.update(dt)
 end
 
 function love.mousepressed(x, y, button)
+  x = x/scalex
+  y = y/scaley
   if gamestate == "startScreen" then
     Menu_mousepressed(x,y,button)
   elseif gamestate == "game" then
@@ -72,7 +86,8 @@ function love.mousepressed(x, y, button)
 end
 
 function love.touchpressed(id, x,y, dx, dy, pressure)
-  
+  x = x/scalex
+  y = y/scaley
   if gamestate == "startScreen" then
     Menu_mousepressed(x,y, 1)
   elseif gamestate == "game" then
@@ -83,6 +98,8 @@ function love.touchpressed(id, x,y, dx, dy, pressure)
 end
 
 function love.touchreleased(id, x,y,dx,dy, pressure)
+  x = x/scalex
+  y = y/scaley
   if gamestate == "starscreen" then
   
   elseif gamestate == "game" then
@@ -93,6 +110,8 @@ end
 
 
 function love.mousereleased(x, y, button)
+  x = x/scalex
+  y = y/scaley
   if gamestate == "starscreen" then
   
   elseif gamestate == "game" then
@@ -106,11 +125,6 @@ function love.keypressed(key)
   end
 end
 
-function love.resize(w, h)
-  width = w
-  height = h
-  scale = height / 1024
-end
 
 
 
