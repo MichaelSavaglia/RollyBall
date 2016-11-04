@@ -14,7 +14,13 @@ function love.load()
   
   love.window.setMode(windowWidth * scalex, windowHeight * scaley)
     
-    
+  mainFont = love.graphics.newFont("Fonts/gamefont.ttf", 24)
+  love.graphics.setFont(mainFont)
+  
+  boldFont = love.graphics.newFont("Fonts/gamefontbold.ttf", 24)
+  
+
+  
   require "Source/MainMenu"
   require "Source/MapGeneration"
   require "Source/MainGame"

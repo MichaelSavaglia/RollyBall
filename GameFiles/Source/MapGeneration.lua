@@ -2,7 +2,7 @@ function Map_Load()
   require "Source/TileConfig"
   require "Source/PlayerController"
   require "Source/CollisionHandler"
-  tileImage = love.graphics.newImage("sprites/wallTile.png")
+  tileImage = love.graphics.newImage("sprites/walltile.png")
   Tiles_Load()
   
   increment = 3
@@ -69,6 +69,7 @@ function Map_Update(dt)
   for i = 0, 9 do
     for j = 0, 4 do
       if tile[i][j].blockActive == true and
+      tile[i].rowY > 500 and
       circleRectangleCollide(circle.x, circle.y, circle.radiusx, tile[i][j].x, tile[i].rowY, tileWitdth, tileHeight) then
         gamestate = "death"
       end
@@ -77,8 +78,9 @@ function Map_Update(dt)
 end
 
 function Map_Draw()
-  love.graphics.setColor(255, 255,255)
+  love.graphics.setColor(52, 56,56)
   love.graphics.rectangle("fill", 0, 0, 540, 960)
+  love.graphics.setColor(255, 255,255)
   
   for i = 0, 9 do --iterates rows
     
