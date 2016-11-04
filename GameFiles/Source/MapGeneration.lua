@@ -5,7 +5,7 @@ function Map_Load()
   tileImage = love.graphics.newImage("sprites/walltile.png")
   Tiles_Load()
   
-  increment = 3
+  increment = 2
   change = 5
   currentTile = 2
   previousTile = 2
