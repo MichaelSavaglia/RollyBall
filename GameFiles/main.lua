@@ -28,6 +28,7 @@ function love.load()
   require "Source/PlayerController"
   require "Source/Gameover"
     
+  
 
   gamestate = "startScreen"
   
@@ -39,15 +40,18 @@ function love.load()
 end
 
 function love.draw()
+
   love.graphics.scale(scalex,scaley)
   --reset color every frame
   love.graphics.setColor(255, 255,255)
+  
   if(gamestate == "startScreen") then
     
     Menu_Draw()
     
   elseif(gamestate == "game") then
     
+    Map_Draw()
     MainGame_Draw()
     
   elseif(gamestate == "death") then
@@ -67,7 +71,7 @@ function love.update(dt)
   elseif(gamestate == "game") then
     
     MainGame_Update(dt)
-    
+    Map_Update(dt)
     
   elseif(gamestate == "death") then
     
