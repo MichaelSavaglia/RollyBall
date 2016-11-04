@@ -16,6 +16,7 @@ end
 
 function Gameover_mousepressed(x, y, button)
     if mouseRectCollide(x, y, button, 120, 500, 300, 96, 1) then
+      Menu_Load()
       gamestate = "startScreen"
     end
 end

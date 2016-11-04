@@ -16,7 +16,7 @@ end
 function MainGame_Update(dt)
   Player_Update(dt)
   Map_Update(dt)
-  score = score + 1
+  --score = score + 1
 end
 
 function MainGame_Draw()

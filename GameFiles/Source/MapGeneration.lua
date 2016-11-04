@@ -17,6 +17,7 @@ function Map_Update(dt)
   for i = 0, 9 do --iterates rows
     tile[i].rowY = tile[i].rowY + increment
     if (tile[i].rowY >= 972) then -- move rows to top
+      score = score + 1
       tile[i].rowY = -104
       change = change - 1
     end

@@ -14,7 +14,7 @@ function love.load()
   
   love.window.setMode(windowWidth * scalex, windowHeight * scaley)
     
-  mainFont = love.graphics.newFont("Fonts/gamefont.ttf", 24)
+  mainFont = love.graphics.newFont("Fonts/gamefont.ttf", 60)
   love.graphics.setFont(mainFont)
   
   boldFont = love.graphics.newFont("Fonts/gamefontbold.ttf", 24)
