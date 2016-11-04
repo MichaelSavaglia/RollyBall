@@ -6,8 +6,11 @@ function love.load()
   require "Source/PlayerController"
   require "Source/Gameover"
     
+  mainGameMusic = love.audio.newSource("Sounds/GameMusic2.mp3")
+  menuMusic = love.audio.newSource("Sounds/GameMusic1.mp3")
+  gameOverSound = love.audio.newSource("Sounds/GameOver.wav")
+ 
   
-
   gamestate = "startScreen"
   
   Menu_Load()
@@ -20,15 +23,24 @@ end
 function love.draw()
 love.graphics.setColor(255, 255,255)
   if(gamestate == "startScreen") then
+    mainGameMusic:pause()
+    menuMusic:play()
+    menuMusic:setLooping(true)
     
     Menu_Draw()
     
   elseif(gamestate == "game") then
+    menuMusic:pause()
+    mainGameMusic:play()
+    mainGameMusic:setLooping(true)
     
     Map_Draw()
     MainGame_Draw()
     
   elseif(gamestate == "death") then
+    mainGameMusic:pause()
+    gameOverSound:play()
+    
     Gameover_Draw()
     
   elseif(gamestate == "scores") then

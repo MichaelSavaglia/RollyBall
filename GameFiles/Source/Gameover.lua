@@ -3,6 +3,7 @@ function Gameover_Load()
   
   gameoverScreen = love.graphics.newImage("sprites/gameover.png")
   returnButton = love.graphics.newImage("sprites/returnButton.png")
+  buttonPressSound = love.audio.newSource("Sounds/ButtonPress.wav")
 end
 
 function Gameover_Update(dt)
@@ -16,6 +17,7 @@ end
 
 function Gameover_mousepressed(x, y, button)
     if mouseRectCollide(x, y, button, 120, 500, 300, 96, 1) then
+      buttonPressSound:play()
       gamestate = "startScreen"
     end
 end
