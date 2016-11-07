@@ -35,6 +35,10 @@ end
 
 function Menu_Draw()
   
+  for i, score, name in highscore() do
+    hiScore = score
+    print(score)
+end
   love.graphics.draw(introScreen, 0, 0)
   if(mute == true) then
     love.graphics.draw(soundOff, 220, 200) 
@@ -43,7 +47,7 @@ function Menu_Draw()
   end
   love.graphics.setColor(52,56,56)
   love.graphics.setFont(mainFont)
-  love.graphics.print("0", 280, 355)
+  love.graphics.print(hiScore, 280, 355)
   love.graphics.draw(options, 0, optionsY)
   if(optionsActive == false) then
     love.graphics.draw(arrowUp, 220, 880)

@@ -92,6 +92,7 @@ function Map_Update(dt)
       if tile[i][j].blockActive == true and
       tile[i].rowY > 500 and
       circleRectangleCollide(circle.x, circle.y, circle.radiusx, tile[i][j].x, tile[i].rowY, tileWitdth, tileHeight) then
+        Gameover_Load()
         gamestate = "death"
       end
     end
