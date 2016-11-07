@@ -33,12 +33,14 @@ function love.load()
   menuMusic = love.audio.newSource("Sounds/GameMusic1.mp3")
   gameOverSound = love.audio.newSource("Sounds/GameOver.wav")
  
-  
   gamestate = "startScreen"
+  
+  colourFile = io.open("colour.txt", "r+")
+  colour = tonumber(colourFile:read())
+  colourFile:close()
   
   Menu_Load()
   MainGame_Load()
-  Map_Load()
   MainGame_Load()
   Gameover_Load()
 end
@@ -67,29 +69,32 @@ end
 function love.update(dt)
   if(gamestate == "startScreen") then
     if (mute == false) then
-    mainGameMusic:pause()
-    menuMusic:play()
-    menuMusic:setLooping(true)
-    else menuMusic:pause()
+      mainGameMusic:pause()
+      menuMusic:play()
+      menuMusic:setLooping(true)
+  else 
+      menuMusic:pause()
   end
-    Menu_Update()
+      Menu_Update()
     
   elseif(gamestate == "game") then
     if (mute == false) then
-    menuMusic:pause()
-    mainGameMusic:play()
-    mainGameMusic:setLooping(true)
-    else mainGameMusic:pause()
-end
+      menuMusic:pause()
+      mainGameMusic:play()
+      mainGameMusic:setLooping(true)
+    else 
+      mainGameMusic:pause()
+    end
 
     MainGame_Update(dt)
     Map_Update(dt)
     
   elseif(gamestate == "death") then
     if (mute == false) then
-    mainGameMusic:pause()
-    gameOverSound:play()
-    else gameOverSound:pause()
+      mainGameMusic:pause()
+      gameOverSound:play()
+    else 
+      gameOverSound:pause()
   end
     Gameover_Update()
     
@@ -126,7 +131,7 @@ end
 function love.touchreleased(id, x,y,dx,dy, pressure)
   x = x/scalex
   y = y/scaley
-  if gamestate == "starscreen" then
+  if gamestate == "startscreen" then
   
   elseif gamestate == "game" then
     Player_mousereleased(x, y, 1)
@@ -151,11 +156,8 @@ function love.keypressed(key)
   if key == "m" then
     if (mute == false) then
       mute = true
-    else mute = false
-      end
+    else 
+      mute = false
+    end
+  end
 end
-end
-
-
-
-

@@ -1,9 +1,32 @@
-function Map_Load()   
+function Map_Load(image)   
   require "Source/TileConfig"
   require "Source/PlayerController"
   require "Source/CollisionHandler"
-  tileImage = love.graphics.newImage("sprites/walltile.png")
   Tiles_Load()
+  
+ 
+  
+  if(image == 0) then
+    tileImage = love.graphics.newImage("sprites/walltile_blue.png")
+    bgRed = 208
+    bgGreen = 244
+    bgBlue = 234
+  elseif (image == 1) then
+    tileImage = love.graphics.newImage("sprites/walltile_Orange.png")
+    bgRed = 100
+    bgGreen = 20
+    bgBlue = 0
+  elseif (image == 2) then
+    tileImage = love.graphics.newImage("sprites/walltile_Green.png")
+    bgRed = 140
+    bgGreen = 216
+    bgBlue = 103
+  elseif (image == 3) then
+    tileImage = love.graphics.newImage("sprites/walltile_Red.png")
+    bgRed = 100
+    bgGreen = 20
+    bgBlue = 0
+  end
   
   increment = 2
   change = 5
@@ -62,9 +85,6 @@ function Map_Update(dt)
         end
       end
     end
-    
-    
-    
   end
   
   for i = 0, 9 do
@@ -76,10 +96,11 @@ function Map_Update(dt)
       end
     end
   end
+  
 end
 
 function Map_Draw()
-  love.graphics.setColor(52, 56,56)
+  love.graphics.setColor(bgRed, bgGreen, bgBlue)
   love.graphics.rectangle("fill", 0, 0, 540, 960)
   love.graphics.setColor(255, 255,255)
   
