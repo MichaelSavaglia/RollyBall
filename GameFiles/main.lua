@@ -37,7 +37,7 @@ function love.load()
  
   gamestate = "startScreen"
   
-  colour = 1
+  colour = 0
   
   Menu_Load()
   MainGame_Load()
