@@ -37,9 +37,7 @@ function love.load()
  
   gamestate = "startScreen"
   
-  colourFile = io.open("colour.txt", "r+")
-  colour = tonumber(colourFile:read())
-  colourFile:close()
+  colour = 0
   
   Menu_Load()
   MainGame_Load()
