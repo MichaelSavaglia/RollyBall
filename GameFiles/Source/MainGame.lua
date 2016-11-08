@@ -11,11 +11,7 @@ function MainGame_Load()
   scoreRect = {x = 7,
     y = 4,
     width = 100,
-    height = 40 }
-  
-  
- 
-  
+    height = 40 } 
 end
 
 function MainGame_Update(dt)

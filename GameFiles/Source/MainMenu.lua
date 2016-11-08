@@ -7,8 +7,12 @@ function Menu_Load()
   optionsActive = false
   arrowUp = love.graphics.newImage("sprites/arrowUp.png")
   arrowDown = love.graphics.newImage("sprites/arrowDown.png")
+  selector = love.graphics.newImage("sprites/selector.png")
+  selectX = 0
+  selectY = 0
   soundOn = love.graphics.newImage("sprites/soundOn.png")
   soundOff = love.graphics.newImage("sprites/soundOff.png")
+  
 
   love.graphics.setFont(mainFont)
   timer = 1
@@ -17,6 +21,9 @@ end
 
 function Menu_Update(dt)
   timer = timer - 0.1
+  
+  selectX = (colour * 108) + 44
+  selectY = optionsY + 182
   
   if(optionsActive == true) then
     optionsY = optionsY - 36
@@ -41,14 +48,16 @@ function Menu_Draw()
 end
   love.graphics.draw(introScreen, 0, 0)
   if(mute == true) then
-    love.graphics.draw(soundOff, 220, 200) 
+    love.graphics.draw(soundOff, 420, 840) 
   else
-    love.graphics.draw(soundOn, 220, 200) 
+    love.graphics.draw(soundOn, 420, 840) 
   end
   love.graphics.setColor(52,56,56)
   love.graphics.setFont(mainFont)
   love.graphics.print(hiScore, 280, 355)
+  love.graphics.setColor(255,255,255)
   love.graphics.draw(options, 0, optionsY)
+  love.graphics.draw(selector, selectX, selectY)
   if(optionsY > 480) then
     love.graphics.draw(arrowUp, 220, 880)
   elseif(optionsY < 480) then
@@ -60,7 +69,7 @@ end
 
 function Menu_mousepressed(x, y, button)
   
-  if mouseRectCollide(x,y,button,220,200,100,100,1) then
+  if mouseRectCollide(x,y,button,420,840,100,100,1) and optionsActive == false then
     if (mute ==false) then
       mute = true
     else 
@@ -68,12 +77,21 @@ function Menu_mousepressed(x, y, button)
     end
   elseif mouseRectCollide(x,y,button,220,860,100,100,1) and optionsActive == false then
     optionsActive = true
-  elseif mouseRectCollide(x,y,button,220,860,100,100,1) and optionsActive == true then
-    optionsActive = false
+  elseif optionsActive == true then
+    if  mouseRectCollide(x,y,button,220,860,100,100,1) then
+      optionsActive = false
+    elseif mouseRectCollide(x,y,button,54,192,108,108,1) then
+      colour = 0 --blue
+    elseif mouseRectCollide(x,y,button,162,192,108,108,1) then
+      colour = 1 --orange
+    elseif mouseRectCollide(x,y,button,270,192,108,108,1) then
+      colour = 2 --green    
+    elseif mouseRectCollide(x,y,button,378,192,108,108,1) then
+      colour = 3 --red
+    end
   elseif timer < 0 and mouseRectCollide(x, y, button, 0, 0, 540, 960, 1) and optionsActive == false then
     buttonPressSound:play()
     Player_Load()
-    Map_Load()
     Map_Load(colour)
     MainGame_Load()
     gamestate = "game"

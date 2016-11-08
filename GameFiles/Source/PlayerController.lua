@@ -14,8 +14,8 @@ function Player_Load()
   circle = {
     x = 270,
     y = 700,
-    radiusx = 26,
-    radiusy = 26 }
+    radiusx = 30 ,
+    radiusy = 30}
   
   dragging = false
   test = false
@@ -37,10 +37,15 @@ function Player_Draw()
   love.graphics.rectangle("fill", rect.x, rect.y, rect.width, rect.height)
   -- reset color
   
-  love.graphics.setColor(0,223,252)
-  -- or
-  --love.graphics.setColor(0,140,158)
-  
+  if(colour == 0) then
+    love.graphics.setColor(208,244,234)
+  elseif(colour == 1) then
+    love.graphics.setColor(254,232,158)
+  elseif(colour == 2) then
+    love.graphics.setColor(140,216,103)
+  elseif(colour == 3) then
+    love.graphics.setColor(254,232,158)
+  end
   love.graphics.rectangle("fill", rect.x, rect.y + 10, rect.width, rect.height - 20)
 
     -- reset color

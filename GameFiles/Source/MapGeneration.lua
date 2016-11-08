@@ -13,9 +13,9 @@ function Map_Load(image)
     bgBlue = 234
   elseif (image == 1) then
     tileImage = love.graphics.newImage("sprites/walltile_Orange.png")
-    bgRed = 100
-    bgGreen = 20
-    bgBlue = 0
+    bgRed = 254
+    bgGreen = 232
+    bgBlue = 138
   elseif (image == 2) then
     tileImage = love.graphics.newImage("sprites/walltile_Green.png")
     bgRed = 140
@@ -23,9 +23,9 @@ function Map_Load(image)
     bgBlue = 103
   elseif (image == 3) then
     tileImage = love.graphics.newImage("sprites/walltile_Red.png")
-    bgRed = 100
-    bgGreen = 20
-    bgBlue = 0
+    bgRed = 254
+    bgGreen = 232
+    bgBlue = 158
   end
   
   increment = 2
@@ -91,7 +91,7 @@ function Map_Update(dt)
     for j = 0, 4 do
       if tile[i][j].blockActive == true and
       tile[i].rowY > 500 and
-      circleRectangleCollide(circle.x, circle.y, circle.radiusx, tile[i][j].x, tile[i].rowY, tileWitdth, tileHeight) then
+      circleRectangleCollide(circle.x, circle.y, 16, tile[i][j].x, tile[i].rowY, tileWitdth, tileHeight) then
         Gameover_Load()
         gamestate = "death"
       end
