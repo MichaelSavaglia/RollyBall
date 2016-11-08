@@ -12,6 +12,11 @@ function Menu_Load()
 
   love.graphics.setFont(mainFont)
   timer = 1
+  
+  for i, score, name in highscore() do
+    hiScore = score
+    
+  end
 
 end
 
@@ -35,10 +40,7 @@ end
 
 function Menu_Draw()
   
-  for i, score, name in highscore() do
-    hiScore = score
-    print(score)
-end
+  
   love.graphics.draw(introScreen, 0, 0)
   if(mute == true) then
     love.graphics.draw(soundOff, 220, 200) 
