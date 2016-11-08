@@ -28,13 +28,6 @@ function Player_Update(dt)
     circle.x = love.mouse.getX() / scalex
   end
   
-  --if circleRectangleCollide(circle.x, circle.y, circle.radiusx, rectangle.x, rectangle.y, rectangle.width, rectangle.height) then
-  if(circle.x + circle.radiusx >= 540) or
-  (circle.x - circle.radiusx <= 0) then
-    gamestate = "death"
-  end
-  
-  
 end
 
 

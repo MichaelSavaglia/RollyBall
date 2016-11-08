@@ -45,9 +45,9 @@ function Menu_Draw()
   love.graphics.setFont(mainFont)
   love.graphics.print("0", 280, 355)
   love.graphics.draw(options, 0, optionsY)
-  if(optionsActive == false) then
+  if(optionsY > 480) then
     love.graphics.draw(arrowUp, 220, 880)
-  elseif(optionsActive == true) then
+  elseif(optionsY < 480) then
     love.graphics.draw(arrowDown, 220, 880)
   end
 end
