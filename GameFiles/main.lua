@@ -19,7 +19,7 @@ function love.load()
   
   boldFont = love.graphics.newFont("Fonts/gamefontbold.ttf", 24)
   
-
+  
   
   require "Source/MainMenu"
   require "Source/MapGeneration"
@@ -27,8 +27,10 @@ function love.load()
   require "Source/CollisionHandler"
   require "Source/PlayerController"
   require "Source/Gameover"
-    
-  mute = false
+  highscores = require("Source/SICK")
+  highscores.set("score.txt", 1, 0, 0)
+  
+  mute = true
   mainGameMusic = love.audio.newSource("Sounds/GameMusic2.mp3")
   menuMusic = love.audio.newSource("Sounds/GameMusic1.mp3")
   gameOverSound = love.audio.newSource("Sounds/GameOver.wav")

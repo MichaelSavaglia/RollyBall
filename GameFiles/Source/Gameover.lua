@@ -1,9 +1,13 @@
 function Gameover_Load()
   require "Source/CollisionHandler"
+  require "Source/maingame"
   
   gameoverScreen = love.graphics.newImage("sprites/gameover.png")
   returnButton = love.graphics.newImage("sprites/returnButton.png")
   buttonPressSound = love.audio.newSource("Sounds/ButtonPress.wav")
+  
+  highscores.add("0", score)
+  highscores.save()
 end
 
 function Gameover_Update(dt)
