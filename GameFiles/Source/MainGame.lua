@@ -17,11 +17,6 @@ end
 function MainGame_Update(dt)
   Player_Update(dt)
   Map_Update(dt)
-  --score = score + 1
-  for i, score, name in highscore() do
-
-   print(name, score)
-  end
 end
 
 function MainGame_Draw()
