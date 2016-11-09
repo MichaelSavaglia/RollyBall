@@ -7,11 +7,15 @@ function Menu_Load()
   optionsActive = false
   arrowUp = love.graphics.newImage("sprites/arrowUp.png")
   arrowDown = love.graphics.newImage("sprites/arrowDown.png")
+  arrowX = 220
+  arrowY = 880
   selector = love.graphics.newImage("sprites/selector.png")
   selectX = 0
   selectY = 0
   soundOn = love.graphics.newImage("sprites/soundOn.png")
   soundOff = love.graphics.newImage("sprites/soundOff.png")
+  muteX = 420
+  muteY = 840
   
 
   love.graphics.setFont(mainFont)
@@ -50,20 +54,22 @@ function Menu_Draw()
   
   love.graphics.draw(introScreen, 0, 0)
   if(mute == true) then
-    love.graphics.draw(soundOff, 420, 840) 
+    love.graphics.draw(soundOff, muteX, muteY) 
   else
-    love.graphics.draw(soundOn, 420, 840) 
+    love.graphics.draw(soundOn, muteX, muteY) 
   end
+  
   love.graphics.setColor(52,56,56)
   love.graphics.setFont(mainFont)
   love.graphics.print(hiScore, 280, 355)
   love.graphics.setColor(255,255,255)
   love.graphics.draw(options, 0, optionsY)
   love.graphics.draw(selector, selectX, selectY)
+  
   if(optionsY > 480) then
-    love.graphics.draw(arrowUp, 220, 880)
+    love.graphics.draw(arrowUp, arrowX, arrowY)
   elseif(optionsY < 480) then
-    love.graphics.draw(arrowDown, 220, 880)
+    love.graphics.draw(arrowDown, arrowX, arrowY)
   end
 end
 
@@ -71,7 +77,7 @@ end
 
 function Menu_mousepressed(x, y, button)
   
-  if mouseRectCollide(x,y,button,420,840,100,100,1) and optionsActive == false then
+  if mouseRectCollide(x,y,button,muteX,muteY,100,100,1) and optionsActive == false then
     if (mute ==false) then
       mute = true
     else 

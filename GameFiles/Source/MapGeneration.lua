@@ -4,7 +4,7 @@ function Map_Load(image)
   require "Source/CollisionHandler"
   Tiles_Load()
   
- 
+  collisionRadius = 16
   
   if(image == 0) then
     tileImage = love.graphics.newImage("sprites/walltile_blue.png")
@@ -37,6 +37,29 @@ function Map_Load(image)
 end
 
 function Map_Update(dt)
+  tileGeneration()
+  
+  tileCollision()
+end
+
+function Map_Draw()
+  love.graphics.setColor(bgRed, bgGreen, bgBlue)
+  love.graphics.rectangle("fill", 0, 0, 540, 960)
+  love.graphics.setColor(255, 255,255)
+  
+  for i = 0, 9 do --iterates rows
+    
+    for j = 0, 4 do --iterates tiles in row
+      
+      if (tile[i][j].blockActive == true) then
+        love.graphics.draw(tileImage, tile[i][j].x, tile[i].rowY)
+      end
+    end
+    
+  end
+end
+
+function tileGeneration()
   for i = 0, 9 do --iterates rows
     tile[i].rowY = tile[i].rowY + increment
     if (tile[i].rowY >= 972) then -- move rows to top
@@ -86,33 +109,17 @@ function Map_Update(dt)
       end
     end
   end
-  
+end
+
+function tileCollision()
   for i = 0, 9 do
     for j = 0, 4 do
       if tile[i][j].blockActive == true and
       tile[i].rowY > 500 and
-      circleRectangleCollide(circle.x, circle.y, 16, tile[i][j].x, tile[i].rowY, tileWitdth, tileHeight) then
+      circleRectangleCollide(circle.x, circle.y, collisionRadius, tile[i][j].x, tile[i].rowY, tileWitdth, tileHeight) then
         Gameover_Load()
         gamestate = "death"
       end
     end
-  end
-  
-end
-
-function Map_Draw()
-  love.graphics.setColor(bgRed, bgGreen, bgBlue)
-  love.graphics.rectangle("fill", 0, 0, 540, 960)
-  love.graphics.setColor(255, 255,255)
-  
-  for i = 0, 9 do --iterates rows
-    
-    for j = 0, 4 do --iterates tiles in row
-      
-      if (tile[i][j].blockActive == true) then
-        love.graphics.draw(tileImage, tile[i][j].x, tile[i].rowY)
-      end
-    end
-    
   end
 end
