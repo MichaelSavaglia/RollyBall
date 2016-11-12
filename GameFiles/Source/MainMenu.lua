@@ -16,7 +16,10 @@ function Menu_Load()
   soundOff = love.graphics.newImage("sprites/soundOff.png")
   muteX = 420
   muteY = 840
-  
+  blueTile = love.graphics.newImage("sprites/walltile_blue.png")
+  orangeTile = love.graphics.newImage("sprites/walltile_Orange.png")
+  greenTile = love.graphics.newImage("sprites/walltile_Green.png")
+  redTile = love.graphics.newImage("sprites/walltile_Red.png")  
 
   love.graphics.setFont(mainFont)
   timer = 1
@@ -64,6 +67,9 @@ function Menu_Draw()
   love.graphics.print(hiScore, 280, 355)
   love.graphics.setColor(255,255,255)
   love.graphics.draw(options, 0, optionsY)
+  
+  drawTileSelector()
+  
   love.graphics.draw(selector, selectX, selectY)
   
   if(optionsY > 480) then
@@ -108,4 +114,11 @@ end
 
 function Menu_keypressed(key)
   
+end
+
+function drawTileSelector()
+  love.graphics.draw(blueTile, 54, optionsY + 192)
+  love.graphics.draw(orangeTile, 162, optionsY + 192)
+  love.graphics.draw(greenTile, 270, optionsY + 192)
+  love.graphics.draw(redTile, 378, optionsY + 192)
 end

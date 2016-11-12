@@ -7,22 +7,18 @@ function Map_Load(image)
   collisionRadius = 16
   
   if(image == 0) then
-    tileImage = love.graphics.newImage("sprites/walltile_blue.png")
     bgRed = 208
     bgGreen = 244
     bgBlue = 234
   elseif (image == 1) then
-    tileImage = love.graphics.newImage("sprites/walltile_Orange.png")
     bgRed = 254
     bgGreen = 232
     bgBlue = 138
   elseif (image == 2) then
-    tileImage = love.graphics.newImage("sprites/walltile_Green.png")
-    bgRed = 140
-    bgGreen = 216
-    bgBlue = 103
+    bgRed = 200
+    bgGreen = 225
+    bgBlue = 200
   elseif (image == 3) then
-    tileImage = love.graphics.newImage("sprites/walltile_Red.png")
     bgRed = 254
     bgGreen = 232
     bgBlue = 158
@@ -52,7 +48,15 @@ function Map_Draw()
     for j = 0, 4 do --iterates tiles in row
       
       if (tile[i][j].blockActive == true) then
-        love.graphics.draw(tileImage, tile[i][j].x, tile[i].rowY)
+        if(colour == 0) then
+          love.graphics.draw(blueTile, tile[i][j].x, tile[i].rowY)
+        elseif (colour == 1) then
+          love.graphics.draw(orangeTile, tile[i][j].x, tile[i].rowY)
+        elseif (colour == 2) then
+          love.graphics.draw(greenTile, tile[i][j].x, tile[i].rowY)
+        elseif (colour == 3) then
+          love.graphics.draw(redTile, tile[i][j].x, tile[i].rowY)
+        end
       end
     end
     
