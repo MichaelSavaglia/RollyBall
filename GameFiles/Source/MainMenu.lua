@@ -65,7 +65,9 @@ function Menu_Draw()
   elseif(optionsY < 480) then
     love.graphics.draw(arrowDown, 220, 880)
   end
+
 end
+
 
 
 

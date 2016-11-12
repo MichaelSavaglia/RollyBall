@@ -5,4 +5,6 @@ function love.conf(c)
   window.height = 1920/2
   c.window.resizable = true
   c.window.highdpi = true
+  c.externalstorage = true
+  
 end
