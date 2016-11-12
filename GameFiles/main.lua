@@ -3,13 +3,19 @@ function love.load()
   windowWidth = 540
   windowHeight = 1920/2
   
+
+  highscores = require("Source/SICK")
+      fileDir = love.filesystem.getSaveDirectory()
   if love.system.getOS() == "Android" then
     local x, y = love.graphics.getDimensions()
     scalex = (x/windowWidth)
     scaley = (y/windowHeight)
+
+    highscores.set(fileDir .. "/score.dat", 1, 0, 0)
   else
     scalex = 1
     scaley = 1
+    highscores.set("/score.dat", 1, 0, 0)
   end
   
   love.window.setMode(windowWidth * scalex, windowHeight * scaley)
@@ -19,7 +25,7 @@ function love.load()
   
   boldFont = love.graphics.newFont("Fonts/gamefontbold.ttf", 24)
   
-  
+  fileDir = love.filesystem.getSaveDirectory()
   
   require "Source/MainMenu"
   require "Source/MapGeneration"
@@ -27,8 +33,8 @@ function love.load()
   require "Source/CollisionHandler"
   require "Source/PlayerController"
   require "Source/Gameover"
-  highscores = require("Source/SICK")
-  highscores.set("score.txt", 1, 0, 0)
+  
+
   
   mute = true
   mainGameMusic = love.audio.newSource("Sounds/GameMusic2.mp3")

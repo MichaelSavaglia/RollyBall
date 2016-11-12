@@ -1,6 +1,6 @@
 function Gameover_Load()
   require "Source/CollisionHandler"
-  require "Source/maingame"
+  require "Source/MainGame"
   
   gameoverScreen = love.graphics.newImage("sprites/gameover.png")
   returnButton = love.graphics.newImage("sprites/returnButton.png")
