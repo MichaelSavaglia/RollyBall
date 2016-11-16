@@ -19,9 +19,9 @@ function Map_Load(image)
     bgGreen = 225
     bgBlue = 200
   elseif (image == 3) then
-    bgRed = 254
-    bgGreen = 232
-    bgBlue = 158
+    bgRed = 216 
+    bgGreen = 191
+    bgBlue = 216
   end
   
   increment = 2
