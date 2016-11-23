@@ -3,7 +3,6 @@ function Gameover_Load()
   require "Source/MainGame"
   
   gameoverScreen = love.graphics.newImage("sprites/gameover.png")
-  returnButton = love.graphics.newImage("sprites/returnButton.png")
   buttonPressSound = love.audio.newSource("Sounds/ButtonPress.wav")
   
   highscores.add("0", score)
@@ -16,11 +15,10 @@ end
 
 function Gameover_Draw()
   love.graphics.draw(gameoverScreen, 0, 0)
-  love.graphics.draw(returnButton, 120, 500)
 end
 
 function Gameover_mousepressed(x, y, button)
-    if mouseRectCollide(x, y, button, 120, 500, 300, 96, 1) then
+    if mouseRectCollide(x, y, button, 0, 0, 540, 960, 1) then
 
       if (mute == false) then
       buttonPressSound:play()
