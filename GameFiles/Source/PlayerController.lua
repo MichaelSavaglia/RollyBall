@@ -14,8 +14,8 @@ function Player_Load()
   circle = {
     x = 270,
     y = 700,
-    radiusx = 30 ,
-    radiusy = 30}
+    radiusx = 20 ,
+    radiusy = 20}
   
   dragging = false
   test = false
